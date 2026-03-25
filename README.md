@@ -1,6 +1,6 @@
 # Predictive HR Analytics & Risk Mitigation Pipeline - A study of Employee Retention in Salifort Motors
-**Author: Navneet Wadhavane | Target Output: Enterprise BI Ingestion**
-
+### **Author:** Navneet Wadhavane | **Target Output:** Enterprise BI Ingestion
+#
 ### Introduction:
 This project is aimed to identify the factors influencing employee turnover at Salifort Motors, a fictional alternative energy vehicle manufacturer. Here, I analyzed the human resources data, which included variables such as monthly working hours, number of projects, promotion status, department, and salary. I executed a structural audit to identify nulls, standardized nomenclature, and performed Exploratory Data Analysis (EDA) using Python packages such as Numpy, Pandas, Matplotlib, and Seaborn.
 
