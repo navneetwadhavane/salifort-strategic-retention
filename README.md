@@ -50,10 +50,18 @@ During the initial structural audit, we detected 3,008 duplicate rows. To preven
 1. **The Burnout Metric:** The mean working hours sit at ~201 per month. Assuming a standard 176-hour work month, the average employee is actively working overtime. The maximum is a brutal 310 hours (nearly 14 hours a day).
 2. **Evaluation Floors:** Employee satisfaction ranges completely from 0.09 to 1.0, but the absolute minimum performance evaluation is 0.36. We have a truncated distribution here—no one is scoring near zero, suggesting underperforming employees are either terminated or leave before generating lower scores.
 3. **The Danger Zone:** The vast majority of turnover happens strictly between years 3 and 5. Year 3 is the primary breaking point. If an employee survives past year 6, attrition effectively drops to zero.
+
+<img src="assets/charts/1_tenure_bar_chart.png" alt="Grouped bar chart showing mass talent turnover between years 3 and 5." width="700">
+
 4. **The Satisfaction Inversion:** The correlation matrix reveals a mathematically significant negative correlation (-0.35) between `satisfaction_level` and attrition. This is our primary leading indicator.
 5. **The Workload Interaction:** `number_project` and `average_monthly_hours` show a strong positive correlation (0.33). Stacking projects forces overtime and drives up burnout. Employees with 7 projects invariably leave.
 6. **High-Risk Nodes:** Attrition is not evenly distributed. The Sales, Technical, and Support departments represent the highest raw volume of talent flight risk.
+
+<img src="assets/charts/2_feature_correlation_Matrix_Talent_attrition_by_department.png" alt="Side-by-side subplots displaying the feature correlation matrix and talent attrition breakdown by department." width="800">
+
 7. **Behavioral Clustering:** A scatterplot mapping evaluation vs. satisfaction revealed three distinct attrition clusters. The most critical risk node is the "Burnout" cluster: top performers with evaluation scores > 0.8 who have completely collapsed in satisfaction. Salifort is actively bleeding its highest-performing talent.
+
+<img src="assets/charts/3_behavioral_clustering_evaluation_vs._satisfaction.png" alt="Scatterplot mapping employee evaluation scores against satisfaction levels, highlighting the burnout cluster." width="700">
 
 **Recommendations based on EDA:**
 1. Retention budgets should not be spread thinly across the entire company. HR interventions must be surgically targeted at engineers approaching their 3rd work anniversary.
@@ -80,6 +88,9 @@ We used Accuracy, Recall, Precision, and F1 Score. We heavily prioritized the **
 | **Baseline Logistic Regression** | 0.79 | 0.84 | 0.43 | 0.57 | 336 (out of 398) |
 | **Champion Random Forest** | 0.98 | 0.92 | 0.98 | 0.95 | 368 (out of 398) |
 
+<img src="assets/charts/4_baseline_confusion_matrix_logistic_regression.png" alt="Confusion matrix validating the baseline Logistic Regression model's predictive accuracy." width="600">
+<img src="assets/charts/5_advanced_confusion_matrix_champion_random_forest.png" alt="Confusion matrix validating the Champion Random Forest model's optimized predictive accuracy." width="600">
+
 The Advanced Random Forest model vastly outperformed the baseline, mapping optimal decision boundaries to achieve an F1 score of 0.95 and an overall accuracy of 98%.
 
 ---
@@ -90,6 +101,9 @@ The Advanced Random Forest model vastly outperformed the baseline, mapping optim
 1. We established a sanitized predictive pipeline on 11,991 clean HR records.
 2. We generated an optimized Random Forest Champion model that correctly classified 98% of overall employee retention statuses.
 3. Extracted Feature Importances conclusively proved that `satisfaction_level`, `tenure`, and `number_project` are the top three drivers of talent attrition.
+
+<img src="assets/charts/6_top_drivers_of_talent_attrition.png" alt="Horizontal bar chart identifying satisfaction level, tenure, and project volume as the top drivers of attrition." width="700">
+
 4. **Compensation is a Distraction:** The model definitively proves that low salary (`salary_low`) has near-zero predictive weight. Throwing money at the problem will not fix the churn.
 5. **The True Catalysts:** Attrition is driven by a compounding cycle of operational strain—specifically, tenure stagnation intersecting with project stacking.
 
